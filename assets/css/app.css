@@ -5,5 +5,14 @@
 
 .navbar-inverse .navbar-brand {
     color: #fff;
-    font-size: 1.4em;
+    font-size: 1.8em;
+}
+
+.connect {
+	color: #0F4392;
+	font-weight: bold;
+}
+
+footer {
+	background: ();
 }

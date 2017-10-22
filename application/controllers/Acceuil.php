@@ -1,4 +1,4 @@
-<?php
+<?php if (!defined('BASEPATH')) exit('Pas de script executer depuis url');
 
 class Acceuil extends CI_Controller {
 
@@ -12,5 +12,6 @@ class Acceuil extends CI_Controller {
     {
     	$this->load->view('templates/header');
         $this->load->view('Acceuil/acceuil');
+        $this->load->view('templates/footer');
     }
 }
