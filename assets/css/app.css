@@ -1,0 +1,9 @@
+.navbar-inverse {
+    background-color: #0F4392;
+    border-color: #fff;	    
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+    font-size: 1.4em;
+}
