@@ -4,8 +4,8 @@ class Acceuil extends CI_Controller {
 
 	public function __construct()
 	{
-		parent::__construct();
-		$this->load->helper(array('assets', 'url'));
+		parent::__construct();		
+       
 	}
     
     public function index()

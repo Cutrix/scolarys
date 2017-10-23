@@ -1,0 +1,4 @@
+Connexion par defaut
+
+Email: admin@admin.com
+mdp: 3f3a85be1de0a9aad8a64799092a6132cdc936c1  (DieuestAmour)

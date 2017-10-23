@@ -10,6 +10,11 @@ class Publier extends CI_Controller {
 
 	public function question()
 	{
+		//var_dump($_POST);
+		$this->session->set_userdata('nom', 'alpha');
+		$this->session->unset_userdata(array('nom' => 'alpha'));
+		echo $this->session->userdata('nom');
+		echo $q1 = $this->input->post('q1');
 		$this->load->view('templates/header');
 		$this->load->view('Propositions/form');
 		$this->load->view('templates/footer');
