@@ -19,4 +19,14 @@ class Auth_model extends CI_Model {
     {
     	return $this->db->count_all($this->table);
     }
+
+    public function isSu($mail, $pass)
+    {
+        return $this->db->select('privilegeEt')
+                        ->from($this->table)
+                        ->where('email', $mail)
+                        ->where('mdp', $pass)
+                        ->get()
+                        ->result() == 1;
+    }
 }

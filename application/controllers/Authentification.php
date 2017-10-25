@@ -18,14 +18,18 @@ class Authentification extends CI_Controller {
 
         $this->form_validation->set_rules('pwd', '"Votre mot de passe"', 'required');		
        
-        if($this->form_validation->run()) {
-        	//$data['email'] = 
+        if($this->form_validation->run()) {        	
         	
         	$mail = $this->input->post('email');
         	$pwd = sha1($this->input->post('pwd'));
         	
-        	if (valid_email($mail)) {        		
-	        	if($this->authManager->connect($mail, $pwd)) {
+        	if (valid_email($mail)) {
+                if ($this->authManager->isSu($mail, $pwd))
+                    $this->session->set_userdata('isSu', 1);
+                else 
+                    $this->session->set_userdata('isSu', 0);
+	        	
+                if($this->authManager->connect($mail, $pwd)) {
 	        		$this->session->set_userdata('email', $mail);
 	        		redirect('/Acceuil');
 	        	}

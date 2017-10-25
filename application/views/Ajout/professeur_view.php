@@ -1,13 +1,13 @@
-<h4>Ajouter un professeur</h4> <?= $test ?>
+<h4>Ajouter un professeur</h4>
 <form method="post" class="col-md-6 col-md-offset-1" action="">
 	<div class="field">
-		<label for="" class="field-label">Nom</label>
+		<label for="" class="field-label">email du professeur</label>
 		<input type="text" class="field-input" name="email">
 		<small><?= form_error('email') ?></small>
 	</div>
 	
 	<div class="field">
-		<label for="" class="field-label">Prenom </label>
+		<label for="" class="field-label">Mot de passe du professeur</label>
 		<input type="text" class="field-input" name="pwd">
 		<small><?= form_error('mdp') ?></small>
 	</div>
