@@ -1,0 +1,10 @@
+Email admin par defaut 
+admin@admin.com
+mot de passe
+DieuestAmour
+
+
+Email professeur par defaut
+julia@gmail.com
+pass
+baba

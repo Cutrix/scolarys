@@ -27,6 +27,6 @@ class Auth_model extends CI_Model {
                         ->where('email', $mail)
                         ->where('mdp', $pass)
                         ->get()
-                        ->result() == 1;
+                        ->result();
     }
 }

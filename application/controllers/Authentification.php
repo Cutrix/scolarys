@@ -1,4 +1,4 @@
-<?php if(!defined('BASEPATH')) exit('Pas accessible depuis en haut');
+<?php if(!defined('BASEPATH')) exit('No direct access allowed');
 
 class Authentification extends CI_Controller {
     public function __construct()
@@ -23,19 +23,18 @@ class Authentification extends CI_Controller {
         	$mail = $this->input->post('email');
         	$pwd = sha1($this->input->post('pwd'));
         	
-        	if (valid_email($mail)) {
-                if ($this->authManager->isSu($mail, $pwd))
-                    $this->session->set_userdata('isSu', 1);
-                else 
-                    $this->session->set_userdata('isSu', 0);
-	        	
-                if($this->authManager->connect($mail, $pwd)) {
-	        		$this->session->set_userdata('email', $mail);
-	        		redirect('/Acceuil');
+            if (valid_email($mail)) {                    
+                if($this->authManager->connect($mail, $pwd)) {                    
+	        		$this->session->set_userdata('email', $mail);                    
+                    $isSu = (int) $this->authManager->isSu($mail, $pwd)[0]->privilegeEt === 1;                    
+                    if ($isSu)
+                        $this->session->set_userdata('isSu', $isSu);
+                    redirect('acceuil');
 	        	}
         	}
 
         } else {
+            //Signature
         	echo 'formaulaire non valide';
         }
 
