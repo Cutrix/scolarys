@@ -3,6 +3,7 @@
 class Auth_model extends CI_Model {
 
     protected $table = 'authenfication';
+    protected $tableProf = 'professeur';
 
     public function connect($email, $mdp)
     {
@@ -12,6 +13,13 @@ class Auth_model extends CI_Model {
     					->where('mdp', $mdp)
     					->get()
     					->result();
+    }
+
+    public function isProf(int $auth)
+    {
+        return $this->db->set('authEt', $auth)
+                        ->update($this->tableProf);
+                        
     }
 
 

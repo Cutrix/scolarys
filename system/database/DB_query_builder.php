@@ -1192,7 +1192,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	 * @param	string	$direction	ASC, DESC or RANDOM
 	 * @param	bool	$escape
 	 * @return	CI_DB_query_builder
-	 */
+		 */
 	public function order_by($orderby, $direction = '', $escape = NULL)
 	{
 		$direction = strtoupper(trim($direction));

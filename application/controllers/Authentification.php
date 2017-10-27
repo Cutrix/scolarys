@@ -11,33 +11,42 @@ class Authentification extends CI_Controller {
 
     public function connexion()
     {    	        
-    	$this->load->view('templates/header');
-        $this->load->view('Connexion/form_connexion');
+        $this->load->view('templates/header');
+
+        $this->form_validation->set_rules('email', '"Email"', 'required');
+        $this->form_validation->set_rules('pwd', '"Mot de passe"', 'required');
+
+        if ($this->form_validation->run()) {
+
+            $mail = $this->input->post('email');
+            $pass = sha1($this->input->post('pwd'));    
+
+            //Recuperation de l'email du statut concerne
+            $d_email = isset($this->authManager->detection($mail, $pass)[0]->email) ? $this->authManager->detection($mail, $pass)[0]->email : "";
         
-        $this->form_validation->set_rules('email', '"Votre email"', 'required|encode_php_tags');
+            $this->session->set_userdata('email', $d_email);            
 
-        $this->form_validation->set_rules('pwd', '"Votre mot de passe"', 'required');		
-       
-        if($this->form_validation->run()) {        	
-        	
-        	$mail = $this->input->post('email');
-        	$pwd = sha1($this->input->post('pwd'));
-        	
-            if (valid_email($mail)) {                    
-                if($this->authManager->connect($mail, $pwd)) {                    
-	        		$this->session->set_userdata('email', $mail);                    
-                    $isSu = (int) $this->authManager->isSu($mail, $pwd)[0]->privilegeEt === 1;                    
-                    if ($isSu)
-                        $this->session->set_userdata('isSu', $isSu);
-                    redirect('acceuil');
-	        	}
-        	}
+            //Deetection du statut
+            if (!empty($this->authManager->detection($mail, $pass))) {
+                $isSu = ($this->authManager->isSu($this->authManager->detection($mail, $pass))) ? true : false;
+                $isProf = ($this->authManager->isProf($this->authManager->detection($mail, $pass))) ? true : false;
+                $isParent = ($this->authManager->isParent($this->authManager->detection($mail, $pass))) ? true : false;
 
-        } else {
-            //Signature
-        	echo 'formaulaire non valide';
+            //Creation des sessions pour les differents statut
+                if ($isSu) $this->session->set_userdata('statut', 'su');
+                if ($isProf) $this->session->set_userdata('statut', 'prof');
+                if ($isParent) $this->session->set_userdata('statut', 'parent');
+            
+
+            //Redirection
+                redirect('Acceuil');
+            } else {
+                $data['error'] = 'Mauvais identifiant ou mot de passe';                    
+            }
+            
         }
-
-        $this->load->view('templates/footer.php');
+        $data = "";
+    	$this->load->view('Connexion/form_connexion', $data);
+        $this->load->view('templates/footer'); 
     }
 }

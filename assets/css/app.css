@@ -93,3 +93,6 @@ body {
 	height:42px;
 }
 
+.error {
+	color: red;
+}
