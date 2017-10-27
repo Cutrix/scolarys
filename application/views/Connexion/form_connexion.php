@@ -1,4 +1,5 @@
 <form method="post" class="col-md-6 col-md-offset-1" action="">
+	<center><small class="error"><?= $error ?? '' ?></small></center>
 	<div class="field">
 		<label for="" class="field-label">Email</label>
 		<input type="email" class="field-input" name="email">

@@ -33,9 +33,21 @@ class Authentification extends CI_Controller {
                 $isParent = ($this->authManager->isParent($this->authManager->detection($mail, $pass))) ? true : false;
 
             //Creation des sessions pour les differents statut
-                if ($isSu) $this->session->set_userdata('statut', 'su');
-                if ($isProf) $this->session->set_userdata('statut', 'prof');
-                if ($isParent) $this->session->set_userdata('statut', 'parent');
+                if ($isSu) 
+                {
+                    $this->session->set_userdata('statut', 'su');
+                    $this->session->set_userdata('id_admin', (int) $this->authManager->detection($mail, $pass)[0]->AdminID);
+                }
+                
+                if ($isProf) {
+                    $this->session->set_userdata('statut', 'prof');
+                    $this->session->set_userdata('id_prof', (int) $this->authManager->detection($mail, $pass)[0]->ProfesseurID);
+                }
+                
+                if ($isParent) {                    
+                    $this->session->set_userdata('statut', 'parent');
+                    $this->session->set_userdata('id_parent', (int) $this->authManager->detection($mail, $pass)[0]->ProfesseurID);
+                }
             
 
             //Redirection
