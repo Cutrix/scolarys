@@ -8,6 +8,8 @@ class Publier extends CI_Controller {
 
 		$this->load->database();
         $this->load->model('Publier_model', 'publierManager');
+
+        $this->load->helper('reponses');
 	}
 
 	public function question()
@@ -100,23 +102,110 @@ class Publier extends CI_Controller {
 
 			);
 
-
 			//Insertion des questions en bd
 			
 			if($this->publierManager->add_question($questions)){               
 				$this->session->set_userdata('backQ', $questions);
+				$ids = array_reverse($this->publierManager->getIds());
+				$this->session->set_userdata('ids', $ids);
 				redirect('publier/reponses/');
 			}
 		} 
 		
-		$this->load->view('Propositions/form');
+		$this->load->view('Publier/form');
 
 		$this->load->view('templates/footer');
 	}
 
 	public function reponses()
 	{
-		var_dump($this->session->userdata());
+		$this->load->view('templates/header');
+		$data['qB'] = $this->session->userdata('backQ') ?? '';
+
+		//var_dump(isTrue($this->input->post('r1'), $this->input->post($this->input->post('q1'))));			
+
+		$this->form_validation->set_rules('r1', '"Reponse 1"', 'required');
+		/*$this->form_validation->set_rules('r2', '"Reponse 1"', 'required');
+		$this->form_validation->set_rules('r3', '"Reponse 1"', 'required');
+		$this->form_validation->set_rules('r4', '"Reponse 1"', 'required');
+		$this->form_validation->set_rules('r5', '"Reponse 1"', 'required');
+		$this->form_validation->set_rules('r6', '"Reponse 1"', 'required');*/
+
+		$ids = (($this->session->userdata('ids')) != null) ? $this->session->userdata('ids') : null;
+
+		if ($this->form_validation->run()) {
+
+			$answers = array(
+				array(
+					'reponseText' => $this->input->post('r1'),
+					'questionEt' => (int) $ids[0]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r1'), $this->input->post($this->input->post('q1')))
+				),
+
+				array(
+					'reponseText' => $this->input->post('r2'),
+					'questionEt' => (int) $ids[1]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r2'), $this->input->post($this->input->post('q1')))
+				),
+
+				array(
+					'reponseText' => $this->input->post('r3'),
+					'questionEt' => (int) $ids[3]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r3'), $this->input->post($this->input->post('q1')))
+				),
+
+				array(
+					'reponseText' => $this->input->post('r4'),
+					'questionEt' => (int) $ids[4]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r4'), $this->input->post($this->input->post('q2')))
+				),
+
+				array(
+					'reponseText' => $this->input->post('r5'),
+					'questionEt' => (int) $ids[4]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r5'), $this->input->post($this->input->post('q2')))
+				),
+
+				array(
+					'reponseText' => $this->input->post('r6'),
+					'questionEt' => (int) $ids[4]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r6'), $this->input->post($this->input->post('q2')))
+				),
+				array(
+					'reponseText' => $this->input->post('r7'),
+					'questionEt' => (int) $ids[4]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r7'), $this->input->post($this->input->post('q3')))
+				),
+				array(
+					'reponseText' => $this->input->post('r8'),
+					'questionEt' => (int) $ids[4]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r8'), $this->input->post($this->input->post('q3')))
+				),
+				array(
+					'reponseText' => $this->input->post('r9'),
+					'questionEt' => (int) $ids[4]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r9'), $this->input->post($this->input->post('q3')))
+				),
+				array(
+					'reponseText' => $this->input->post('r4'),
+					'questionEt' => (int) $ids[4]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r4'), $this->input->post($this->input->post('q2')))
+				),
+				array(
+					'reponseText' => $this->input->post('r4'),
+					'questionEt' => (int) $ids[4]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r4'), $this->input->post($this->input->post('q2')))
+				),
+				array(
+					'reponseText' => $this->input->post('r4'),
+					'questionEt' => (int) $ids[4]->QuestionID,
+					'isTrue' => (int) isTrue($this->input->post('r4'), $this->input->post($this->input->post('q2')))
+				)
+			);
+		}
+		//var_dump($this->session->userdata());
+		$this->load->view('Publier/form_reponse', $data);
+		$this->load->view('templates/footer');
 	}
 
 }
