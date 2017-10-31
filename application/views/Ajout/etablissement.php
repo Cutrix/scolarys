@@ -1,6 +1,7 @@
 <?php if (isset($success)): ?>
-	<script type="text/javascript">alert('Ajout reussie')</script>
+	<script type="text/javascript">alert('Ajout reussi')</script>
 <?php endif ?>
+<button class="btn bnt-default" onclick="window.history.back()">&larr;</button>
 <h3>Ajouter l'etablissement</h3>
 <div class="col-md-8">
 	

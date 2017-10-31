@@ -96,3 +96,20 @@ body {
 .error {
 	color: red;
 }
+
+footer {
+	position: absolute;
+	border: 1px solid black; 
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #092a35;
+}
+
+.apropostitle {
+	color: #fff;
+}
+
+.error {
+	color: red;
+}

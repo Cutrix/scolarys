@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('Pas de script executer depuis url');
+<?php if (!defined('BASEPATH')) exit('No direct access allowed');
 
 class Acceuil extends CI_Controller {
 

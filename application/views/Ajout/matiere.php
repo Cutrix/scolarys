@@ -1,8 +1,9 @@
-<?php if (isset($success)): ?>
-	<script type="text/javascript">alert('Ajout reussie')</script>
+<?php  if (isset($success)): ?>
+	<script type="text/javascript">alert('Ajout reussi')</script>
 <?php endif ?>
-<h3>Ajouter l'etablissement</h3>
-<div class="col-md-8">
+<button class="btn bnt-default" onclick="window.history.back()">&larr;</button>
+<h3>Ajouter la matiere</h3>
+<div class="col-md-8">	
 	
 	<form action="" method="post">
 		<div class="field">

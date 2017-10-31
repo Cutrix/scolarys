@@ -11,10 +11,18 @@ class Ajout_model extends CI_Model {
 
     public function getAllSubject()
     {
-        return $this->db->select('*')
+        return $this->db->select('matiereText')
                         ->from($this->tableMatiere)
                         ->get()
                         ->result();
+    }
+
+    public function getAllEtablissement()
+    {
+        return $this->db->select('etablissementText')
+                        ->from($this->tableEtablissement)
+                        ->get()
+                        ->result();   
     }
     
     public function add_professor(string $email, string $pwd, int $matiere) {
@@ -29,6 +37,29 @@ class Ajout_model extends CI_Model {
         return $this->db->insert($this->tableEtablissement);
     }
 
+    public function add_prof(array $prof)
+    {
+        return $this->db->insert($this->tableProfs, $prof);
+    }
+
+    public function getIdFromMatiere(string $matiere)
+    {
+        return $this->db->select('MatiereID')
+                        ->from($this->tableMatiere)
+                        ->where('matiereText', $matiere)
+                        ->get()
+                        ->result()[0]->MatiereID;
+    }
+
+    public function getIdFromEtablissement(string $etablissement)
+    {
+        return $this->db->select('EtablissementID')
+                        ->from($this->tableEtablissement)
+                        ->where('etablissementText', $etablissement)
+                        ->get()
+                        ->result()[0]->EtablissementID;   
+    }
+
 
     public function count()
     {
@@ -37,8 +68,7 @@ class Ajout_model extends CI_Model {
 
     public function add_matiere(string $mat)
     {
-        $this->db->set('matiereText', $mat);        
-
-        return $this->db->insert($this->tableMatiere);   
+        return $this->db->set('matiereText', $mat)
+                        ->insert($this->tableMatiere);
     }
 }
