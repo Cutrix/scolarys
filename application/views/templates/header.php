@@ -3,11 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Scolarys</title>
+	<link rel="stylesheet" type="text/css" href="<?= css_url('boostrap.min') ?>">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="<?= css_url('app') ?>">
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet"> 
 
+	<script type="text/javascript" src="<?= js_url("jquery") ?>"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="<?=js_url('bootstrap.min')  ?>"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?= js_url('app') ?>"></script>
 

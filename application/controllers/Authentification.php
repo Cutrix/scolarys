@@ -9,6 +9,11 @@ class Authentification extends CI_Controller {
         $this->load->model('Auth_model', 'authManager');
     }
 
+    public function index()
+    {
+        $this->connexion();
+    }
+
     public function connexion()
     {    	        
         $this->load->view('templates/header');
@@ -37,6 +42,7 @@ class Authentification extends CI_Controller {
                 {
                     $this->session->set_userdata('statut', 'su');
                     $this->session->set_userdata('id_admin', (int) $this->authManager->detection($mail, $pass)[0]->AdminID);
+                    //S'il est administrateur la redirection se fera ici
                 }
                 
                 if ($isProf) {
@@ -57,8 +63,10 @@ class Authentification extends CI_Controller {
             }
             
         }
-        $data = "";
-    	$this->load->view('Connexion/form_connexion', $data);
+        if (isset($data))             
+            $this->load->view('Connexion/form_connexion', $data);
+        else
+            $this->load->view('Connexion/form_connexion');
         $this->load->view('templates/footer'); 
     }
 }

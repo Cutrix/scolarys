@@ -1,4 +1,4 @@
-<section class="container-fluid">
+<section class="container-fluid col-md-9 col-md-offset-1">
 	<div class="carousel slide" id="carousel" data-ride="carousel">
 		<!-- carousel -->
 		<ol class="carousel-indicators">

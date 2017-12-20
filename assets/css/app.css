@@ -97,14 +97,14 @@ body {
 	color: red;
 }
 
-footer {
+/*footer {
 	position: absolute;
 	border: 1px solid black; 
 	left: 0;
 	right: 0;
 	bottom: 0;
 	background: #092a35;
-}
+}*/
 
 .apropostitle {
 	color: #fff;
@@ -112,4 +112,8 @@ footer {
 
 .error {
 	color: red;
+}
+
+section {
+	border: 1px solid red;
 }

@@ -99,4 +99,21 @@ class Configuration extends CI_Controller {
 
         $this->load->view('templates/footer');
     }
+
+//--------------------------------------------------------------------------------------
+    public function blockSomeone()    
+    {
+        //Bloquer une personne reviendra a modifier la base de donnes et ajouter un statut block 
+        if (($this->session->userdata('statut')) !== "su")
+            exit("Vous n'avez pas acces a ce dossier desole!");
+        else {
+
+        }
+
+        $this->load->view('templates/header');
+
+        $this->load->view('Config/config_block');
+
+        $this->load->view('templates/footer');
+    }
 }
