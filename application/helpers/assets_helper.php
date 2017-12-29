@@ -23,3 +23,9 @@ if (!function_exists('img')) {
 		return '<img src="' .img_url($nom). '" alt="' .$alt.'" >';	
 	}
 }
+
+if (!function_exists('current_db_time')) {
+    function current_db_time() {
+        return date('Y-m-d H:i:s');
+    }
+}

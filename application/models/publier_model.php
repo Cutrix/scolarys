@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('Interdiction de manipuler depuis l\'url');
+<?php if (!defined('BASEPATH')) exit('No direct access allowed');
 
 class publier_model extends CI_Model {
 
@@ -7,7 +7,8 @@ class publier_model extends CI_Model {
 
     public function add_question(array $questions)
     {
-    	return $this->db->insert_batch($this->tableQuestions, $questions);
+    	//return $this->db->insert_batch($this->tableQuestions, $questions);
+        return $this->db->insert('question', $questions);
     }
 
     //Obtenir les ids des questions inseres 

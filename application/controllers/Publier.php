@@ -17,6 +17,21 @@ class Publier extends CI_Controller {
 	public function question()
 	{						
 		$this->load->view('templates/header');
+        var_dump($this->input->post());
+        $this->form_validation->set_rules('q', '"Ne doit pas etre vide"', 'required');
+
+        if ($this->form_validation->run()) {
+            if ($this->input->post('reponses') !== null) {
+                $data_questions = [
+                    'qestionText' => $this->input->post('q', TRUE),
+                    'dateQestion' => current_db_time(),
+                    'ProfesseurEt' => $this->session->userdata('id_prof')
+                ];
+                var_dump($this->publierManager->add_question($data_questions));
+            }
+        }
+
+		//$this->publierManager->add_question($data_questions);
 
 		$this->load->view('Publier/form');
 
