@@ -2,15 +2,16 @@
 
 class Auth_model extends CI_Model {
 
-    protected $table = 'authenfication';
-    protected $tableProf = 'professeur';
-    protected $tableAdmin = 'admin';
-    protected $tableParent = 'parent';
+    const TABLE_AUTH = 'authenfication';
+    const TABLE_PROF = 'professeur';
+    const TABLE_ADMIN = 'admin';
+    const TABLE_PARENT = 'parent';
+    const TABLE_ETABLISSEMENT = 'etablissement';
 
     private function detectionAdmin(string $mail, string $pwd)
     {
         return $this->db->select('*')
-                        ->from($this->tableAdmin)
+                        ->from(self::TABLE_ADMIN)
                         ->where('email', $mail)
                         ->where('mdp', $pwd)
                         ->get()
@@ -20,7 +21,7 @@ class Auth_model extends CI_Model {
     private function detectionProf(string $mail, string $pwd)
     {
         return $this->db->select('*')
-                        ->from($this->tableProf)
+                        ->from(self::TABLE_PROF)
                         ->where('email', $mail)
                         ->where('mdp', $pwd)
                         ->get()
@@ -30,7 +31,7 @@ class Auth_model extends CI_Model {
     private function detectionParent(string $mail, string $pwd)
     {
         return $this->db->select('*')
-                        ->from($this->tableParent)
+                        ->from(self::TABLE_PARENT)
                         ->where('email', $mail)
                         ->where('mdp', $pwd)
                         ->get()
@@ -61,6 +62,16 @@ class Auth_model extends CI_Model {
     public function isParent(array $det)
     {
         return intval($det[0]->privilegesEt) === 3;   
+    }
+
+    public function getEtablissement($mail = null) {
+        if ($mail == null) return $this->db->select('*')->from(self::TABLE_ETABLISSEMENT)->get()->result();
+        return $this->db->select('etablissementText')
+                        ->from(self::TABLE_PROF)
+                        ->join(self::TABLE_ETABLISSEMENT, 'professeur.etablissementEt = etablissement.EtablissementID')
+                        ->where('email', $mail)
+                        ->get()
+                        ->result()[0];
     }
         
 }

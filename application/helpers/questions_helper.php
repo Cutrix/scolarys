@@ -7,7 +7,7 @@ if (!function_exists('proposition_questions')) {
                 <div class='modal-dialog'>
                     <div class='modal-content'>
                         <div class='modal-header'>
-                            <button type='button' class='close' data-dismiss='modal'>&times;</button>
+                            <button type='button' class='close btn btn-xs' data-dismiss='modal'>&times;</button>
                             <h3>Propositions de questions/reponses</h3>
                         </div>
                         <div class='modal-body'>                                                                                       
@@ -17,7 +17,10 @@ if (!function_exists('proposition_questions')) {
                              <form method='post'>
                                 <div class='dynamic-stuff'>
                                     <label for='q' class='field-label'>la question</label>
-                                    <input type='text' class='field-input' name='q'>       
+                                    <input type='text' class='field-input' name='q'>                                       
+                                </div><br>
+                                <div class='col-md-4'>
+                                    <input type='text' placeholder='case de la bonne reponse' class='form-control' name='trueq'> 
                                 </div>
                                 <input type='submit' value='Valider' class='btn btn-primary'>
                              </form>

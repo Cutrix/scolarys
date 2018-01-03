@@ -48,6 +48,7 @@ class Authentification extends CI_Controller {
                 if ($isProf) {
                     $this->session->set_userdata('statut', 'prof');
                     $this->session->set_userdata('id_prof', (int) $this->authManager->detection($mail, $pass)[0]->ProfesseurID);
+                    redirect('Acceuil/prof');
                 }
                 
                 if ($isParent) {                    

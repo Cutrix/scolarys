@@ -11,9 +11,9 @@
     <div class="form-group dynamic-element" style="display: none">
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-9">
-                <input type="text" placeholder="la reponse" class="form-control" name="reponses[]">
-                <div class="col-md-1"><button type="button" class="btn btn-success delete">X</button></div>
+            <div class="col-md-10">
+                <div class="col-md-8"><input type="text" placeholder="la reponse" class="form-control" name="reponses[]"></div>
+                <div class="col-md-1"><button type="button" class="btn btn-success delete btn-xs">X</button></div>
             </div>
         </div>
     </div>
