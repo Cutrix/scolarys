@@ -118,11 +118,11 @@
                                     <div class="space-6"></div>
                                     <p> Donner vos details pour commencer </p>
 
-                                    <form>
+                                    <form method="post" action="<?= site_url('Inscription/parent') ?>">
                                         <fieldset>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Nom" name="nom"/>
+															<input type="text" class="form-control" placeholder="Nom" name="nom"/>
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
                                             </label>
@@ -159,13 +159,12 @@
 
                                             <div class="clearfix">
 
-                                                <button type="button" class="width-65 pull-right btn btn-sm btn-success">
-                                                    <span class="bigger-110">S'inscrire</span>
-
-                                                    <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
-                                                </button>
+                                                <input type="submit" class="width-65 pull-right btn btn-sm btn-success">
                                             </div>
                                         </fieldset>
+                                        <?php if (isset($success_insert)): ?>
+                                            <?= $this->input->get(); ?>
+                                        <?php endif ?>
                                     </form>
                                 </div>
 
