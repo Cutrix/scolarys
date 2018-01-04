@@ -1,4 +1,13 @@
-<section class="container-fluid col-md-9 col-md-offset-1">
+<div class="navbar navbar-inverse">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="<?= base_url().'Acceuil' ?>">Scolarys</a>
+    </div>
+    <ul class="nav navbar-nav pull-right">
+        <li><a href="<?= site_url('authentification/connexion')?>" class="btn btn-default"><span class="connect">Connexion</span></a></li>
+        
+    </ul>
+</div>
+<section class="container-fluid col-md-9 col-md-offset-1 row">
 	<div class="carousel slide" id="carousel" data-ride="carousel">
 		<!-- carousel -->
 		<ol class="carousel-indicators">

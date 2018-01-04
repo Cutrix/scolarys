@@ -68,6 +68,6 @@ class Authentification extends CI_Controller {
             $this->load->view('Connexion/form_connexion', $data);
         else
             $this->load->view('Connexion/form_connexion');
-        $this->load->view('templates/footer'); 
+        //$this->load->view('templates/footer');
     }
 }

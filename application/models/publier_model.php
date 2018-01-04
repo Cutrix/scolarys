@@ -19,7 +19,7 @@ class publier_model extends CI_Model {
     public function getIds()
     {
     	return $this->db->select('QuestionID')
-    					->from($this->tableQuestions)
+    					->from(self::TABLE_QUESTION)
     					->order_by('QuestionID', 'DESC')
     					->limit(15)
     					->get()
@@ -43,7 +43,9 @@ class publier_model extends CI_Model {
         return $this->db->count_all($table);
     }
 
-    public function getQuestions(int $prof) {
+    public function getQuestions(int $prof = null) {
+        if ($prof == null)
+            return $this->db->select('*')->from(self::TABLE_QUESTION)->get()->result();
         return $this->db->select('*')
                     ->from(self::TABLE_QUESTION)
                     ->where('ProfesseurEt', $prof)
@@ -52,6 +54,19 @@ class publier_model extends CI_Model {
                     ->get()->result();
     }
 
+    public function getReponses($prof = null) {
+        //if ($q == null) return $this->db->select('*')->from(self::TABLE_REPONSE)->get()->result();
+        return $this->db->select('*')
+                        ->from(self::TABLE_QUESTION)
+                        ->join(self::TABLE_REPONSE, 'question.QuestionID = reponse.questionEt')
+                        ->where('ProfesseurEt', $prof)
+                        ->get()
+                        ->result();
+    }
+
+    public function delReponses(int $rep) {
+        return $this->db->delete(self::TABLE_QUESTION, array('QuestionID', $rep));
+    }
 
 }
 

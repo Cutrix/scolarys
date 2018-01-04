@@ -5,7 +5,8 @@
 	<title>Scolarys</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Login Page - Ace Admin</title>
+    <title>Scolarys</title>
+
 
     <meta name="description" content="User login page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -26,7 +27,7 @@
     <link rel="stylesheet" href="<?= css_url('bootstrap-datepicker3.min') ?>">
     <link rel="stylesheet" href="<?= css_url('bootstrap-editable.min') ?>">
     <link rel="stylesheet" href="<?= css_url('ace-skins.min') ?>">
-
+    <link rel="stylesheet" href="<?= css_url('jquery-ui.min') ?>">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -35,6 +36,7 @@
     <script src="<?=  js_url('html5shiv.min') ?>"></script>
     <script src="<?=  js_url('respond.min') ?>"></script>
     <script src="<?=  js_url('ace-elements.min') ?>"></script>
+    <script src="<?= js_url('ace-extra.min') ?>"</script>
     <script src="<?=  js_url('jquery.maskedinput.min') ?>"></script>
     <script src="<?=  js_url('ace-editable.min') ?>"></script>
     <script src="<?=  js_url('bootstrap-editable.min') ?>"></script>
@@ -45,39 +47,3 @@
 
 </head>
 <body>
-
-
-
-
-
-
-
-	<div class="navbar navbar-inverse">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="<?= base_url().'Acceuil' ?>">Scolarys</a>
-		</div>
-		<ul class="nav navbar-nav pull-right">
-			<li><a href="<?= site_url('authentification/connexion')?>" class="btn btn-default"><span class="connect">Connexion</span></a></li>			            
-	        <?php if ($this->session->userdata('statut') === "su" ): ?>	
-					<li><a href="<?= site_url('statistiques') ?>">Statistiques</a></li>
-					<li><a href="<?= site_url('Ajout') ?>"><span class="plus"></span>Ajouter</a></li>
-					<li><a href="<?= site_url('Voir') ?>">Voir les notes</a></li>
-					<li><a href="<?= site_url('Deconnexion') ?>">Deconnexion</a></li>				
-					<li><a href="<?= site_url('configuration') ?>"><img src="<?= img_url('settings.svg') ?>" width="25px" height="25px"></a></li>				
-			<?php endif ?>
-
-			<?php if ($this->session->userdata('statut') === "prof" ): ?>	
-					<li><a href="<?= site_url('statistiques') ?>">Statistiques</a></li>					
-					<li><a href="<?= site_url('Voir') ?>">Voir les notes</a></li>
-					<li><a href="<?= site_url('Publier/question') ?>">Publier</a></li>
-					<li><a href="<?= site_url('Deconnexion') ?>">Deconnexion</a></li>				
-					<li><a href="<?= site_url('configuration') ?>"><img src="<?= img_url('settings.svg') ?>" width="25px" height="25px"></a></li>				
-			<?php endif ?>				
-
-			<?php if ($this->session->userdata('statut') === "parent" ): ?>						
-					<li><a href="<?= site_url('Voir') ?>">Voir les notes</a></li>
-					<li><a href="<?= site_url('Deconnexion') ?>">Deconnexion</a></li>				
-					<li><a href="<?= site_url('configuration') ?>"><img src="<?= img_url('settings.svg') ?>" width="25px" height="25px"></a></li>				
-			<?php endif ?>		
-		</ul>
-	</div>

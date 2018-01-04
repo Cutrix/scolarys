@@ -9,7 +9,6 @@ class Ajout extends CI_Controller {
 
         $this->load->database();
         $this->load->model('Ajout_model', 'ajoutManager');
-        
     }
 
     //--------------------------------------------------------------------------------------
