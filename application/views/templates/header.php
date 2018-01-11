@@ -10,6 +10,10 @@
 
     <meta name="description" content="User login page" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta charset="utf-8" />
+
+    <meta name="description" content="" />
+
 
     <!-- bootstrap & fontawesome -->
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +37,7 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?= js_url('app') ?>"></script>
 	<script type="text/javascript" src="<?= js_url('jquery.gritter.min') ?>"></script>
+    <script src="<?= js_url('ckeditor/ckeditor') ?>"></script>
     <script src="<?=  js_url('html5shiv.min') ?>"></script>
     <script src="<?=  js_url('respond.min') ?>"></script>
     <script src="<?=  js_url('ace-elements.min') ?>"></script>

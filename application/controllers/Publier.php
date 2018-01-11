@@ -13,6 +13,8 @@ class Publier extends CI_Controller
         $this->load->helper(array('reponses', 'questions'));
     }
 
+    //---------------------------------------------------------------------------------
+
     public function question()
     {
         $this->load->view('templates/header');
@@ -58,5 +60,11 @@ class Publier extends CI_Controller
             $this->load->view('Publier/form', $data);
         else
             $this->load->view('Publier/form');
+    }
+    //---------------------------------------------------------------------------------
+    public function cours()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('publier/cours');
     }
 }

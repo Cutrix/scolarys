@@ -71,11 +71,38 @@
             </li>
 
             <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-list"></i>
+                    <span class="menu-text"> Publier </span>
+
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+
+                <b class="arrow"></b>
+
+                <ul class="submenu">
+                    <li class="">
+                        <span class="menu-text"> <?php if ($this->session->userdata('statut') === "prof" ): ?> <li><a href="<?= site_url('Publier/question') ?>">Question/reponse</a></li> <?php endif ?> </span>
+
+                        <b class="arrow"></b>
+                    </li>
+
+                    <li class="">
+                        <span class="menu-text"> <?php if ($this->session->userdata('statut') === "prof" ): ?> <li><a href="<?= site_url('Publier/cours') ?>">Cours</a></li> <?php endif ?> </span>
+
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="">
 
             <span class="menu-text"> <?php if ($this->session->userdata('statut') === "prof" ): ?> <li><a href="<?= site_url('Voir') ?>">Voir les notes</a></li> <?php endif ?> </span>
 
             <b class="arrow"></b>
             </li>
+
+
 
             <li class="">
 
